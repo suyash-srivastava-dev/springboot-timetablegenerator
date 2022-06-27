@@ -1,0 +1,408 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/teacher": {
+      "get": {
+        "tags": [
+          "teacher-controller"
+        ],
+        "summary": "Get all Teachers",
+        "operationId": "listOfTeachers",
+        "responses": {
+          "200": {
+            "description": "Found the Teachers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "teacher-controller"
+        ],
+        "summary": "Add new Teachers",
+        "operationId": "addTeacher",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Teacher"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Added Teacher to Database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Teacher"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Teacher not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/class": {
+      "get": {
+        "tags": [
+          "class-name-controller"
+        ],
+        "summary": "Get all Class",
+        "operationId": "listOfTeachers_1",
+        "responses": {
+          "200": {
+            "description": "List of Class",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Class not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "class-name-controller"
+        ],
+        "summary": "Add new Class",
+        "operationId": "addEmployee",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassName"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Added Class to Database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Class not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/teacher/{id}": {
+      "get": {
+        "tags": [
+          "teacher-controller"
+        ],
+        "summary": "Get all Teachers By Name",
+        "operationId": "searchTeacher",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found the Teacher with mentioned name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeacherList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid name supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/generate": {
+      "get": {
+        "tags": [
+          "class-name-controller"
+        ],
+        "summary": "Remove a Class with ID",
+        "operationId": "csvFile",
+        "responses": {
+          "200": {
+            "description": "Class removed",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Class not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/class/{id}": {
+      "get": {
+        "tags": [
+          "class-name-controller"
+        ],
+        "summary": "Get Class by ID",
+        "operationId": "getClassById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Class",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassList"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Teacher not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "class-name-controller"
+        ],
+        "summary": "Remove a Class with ID",
+        "operationId": "deleteClass",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Class removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Class not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseStd"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ClassName": {
+        "type": "object",
+        "properties": {
+          "classValue": {
+            "type": "string"
+          },
+          "strength": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "teacherSet": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Teacher"
+            }
+          }
+        }
+      },
+      "Teacher": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "MALE",
+              "FEMALE",
+              "OTHER"
+            ]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "classname": {
+            "$ref": "#/components/schemas/ClassName"
+          }
+        }
+      },
+      "ResponseStd": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "ClassList": {
+        "type": "object",
+        "properties": {
+          "classValue": {
+            "type": "string"
+          },
+          "strength": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "TeacherList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "MALE",
+              "FEMALE",
+              "OTHER"
+            ]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "classList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClassList"
+            }
+          }
+        }
+      }
+    }
+  }
+}
