@@ -2,7 +2,8 @@
 
 This app generates csv file time-table for each class with assigned teachers.
 ## Deployed on heroku server: [LINK](https://timetable-generator-suyash.herokuapp.com/)
-## Documentation: [File](https://github.com/suyash-srivastava-dev/springboot-timetablegenerator/blob/dbd92a4da4be6082416929a188b03d0431d7cc70/openapi.json)
+## Documentation: [Swagger](https://timetable-generator-suyash.herokuapp.com/swagger-ui/index.html#/)
+![img.png](readmeDoc/img_2.png)
 
 ## Class : 
 
